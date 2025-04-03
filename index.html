@@ -23,7 +23,7 @@
       gap: 15px;
     }
     header img {
-      height: 60px;
+      height: 80px;
     }
     section {
       padding: 20px;
@@ -50,6 +50,17 @@
       text-align: center;
       padding: 10px;
       margin-top: 30px;
+    }
+    .map-container {
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
     }
   </style>
 </head>
@@ -78,14 +89,14 @@
     </ul>
 
     <h2>📍 Localisation</h2>
-    <p>Lotissement Petit Tamarin,Enclos,97233 Schoelcher Martinique – Sur rendez-vous uniquement</p>
+    <p>Lotissement Petit Tamarin, Enclos 97233 Schoelcher – Sur rendez-vous uniquement</p>
 
-    <h2>📅 Prendre rendez-vous</h2>
-    <a
-      href="https://wa.me/596696600814?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20réparation.%20Merci%20de%20me%20confirmer%20les%20disponibilités."
-      class="button"
-      target="_blank"
-    >Prendre rendez-vous via WhatsApp</a>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.692524381178!2d-61.06873508494904!3d14.631413389786004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c1b5e1a3f5c4cfd%3A0x5ba5bcb7354ecfb2!2sEnclos%2C%2097233%20Sch%C5%93lcher%2C%20Martinique!5e0!3m2!1sfr!2sfr!4v1712138672157!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <a href="https://forms.gle/f9gjvCkSfJkSPGpq9" class="button" target="_blank">Remplir le formulaire Google</a>
+    <a href="https://wa.me/596696600814?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20réparation%20informatique.%20Merci%20de%20me%20confirmer%20les%20disponibilités." class="button" target="_blank">Ou prendre rendez-vous via WhatsApp</a>
 
     <h2>📞 Me contacter</h2>
     <p>
