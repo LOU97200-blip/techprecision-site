@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Urgent</title>
+  <link rel="icon" href="https://techrepare972.github.io/techprecision-site/assets/logo-techprecision.png">
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    img.logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #ff3b3f;
+      animation: pulse 1.5s infinite;
+    }
+    p {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+    .bonus-message {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #222;
+      border-radius: 10px;
+      color: #ffd700;
+      font-size: 1.1rem;
+      max-width: 90%;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #ff3b3f;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    button:hover {
+      background-color: #ff1f25;
+    }
+    iframe {
+      width: 90%;
+      height: 80vh;
+      border-radius: 12px;
+      margin-top: 1rem;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://techrepare972.github.io/techprecision-site/assets/logo-techprecision.png" alt="TechPrecision Logo" class="logo">
+  <h1>🚨 MESSAGE URGENT</h1>
+  <p>Un nouveau fichier important vous a été envoyé.</p>
+  <button onclick="openFile()">🔓 Ouvrir maintenant</button>
+
+  <div id="fileContainer" style="display:none;">
+    <iframe src="https://techrepare972.github.io/techprecision-site/assets/FICHE%20TECHPRECISION.pdf"></iframe>
+    <div class="bonus-message">
+      🎁 Partagez cette page à vos contacts ! Si vous êtes sélectionné, vous ferez partie des bénéficiaires d’un <strong>ordinateur reconditionné, offert et garanti</strong> par TechPrecision.
+    </div>
+  </div>
+
+  <script>
+    function openFile() {
+      document.querySelector('button').style.display = 'none';
+      document.querySelector('#fileContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
