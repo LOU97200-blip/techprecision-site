@@ -68,6 +68,20 @@
       margin-top: 1rem;
       border: none;
     }
+    .share-btn {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .share-btn:hover {
+      background-color: #218838;
+    }
   </style>
 </head>
 <body>
@@ -81,12 +95,30 @@
     <div class="bonus-message">
       🎁 Partagez cette page à vos contacts ! Si vous êtes sélectionné, vous ferez partie des bénéficiaires d’un <strong>ordinateur reconditionné, offert et garanti</strong> par TechPrecision.
     </div>
+    <button class="share-btn" onclick="sharePage()">📲 Partager ce message</button>
   </div>
 
   <script>
     function openFile() {
       document.querySelector('button').style.display = 'none';
       document.querySelector('#fileContainer').style.display = 'block';
+    }
+
+    function sharePage() {
+      const shareText = "🚨 URGENT : TechPrecision vous offre peut-être un PC reconditionné ! Cliquez ici pour ouvrir : https://techrepare972.github.io/techprecision-site/PUBv1.html";
+      const shareUrl = "https://techrepare972.github.io/techprecision-site/PUBv1.html";
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Offre TechPrecision',
+          text: shareText,
+          url: shareUrl
+        }).then(() => console.log('Partagé avec succès'))
+          .catch((error) => console.error('Erreur de partage', error));
+      } else {
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+        window.open(whatsappUrl, '_blank');
+      }
     }
   </script>
 </body>
