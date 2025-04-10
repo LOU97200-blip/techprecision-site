@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>😳 Surprise...</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+    .tease {
+      font-size: 2.2rem;
+      animation: pulse 1.5s infinite;
+      color: #ff4757;
+    }
+    .reveal {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 90%;
+    }
+    .reveal img {
+      max-width: 320px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+    .cta {
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .cta:hover {
+      background-color: #007acc;
+    }
+    .bonus {
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: #ccc;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tease" id="teaser"></div>
+
+  <div class="reveal" id="reveal">
+    <p style="font-size: 1.3rem;">😅 Pas de panique !</p>
+    <p id="finalMessage" style="font-size: 1.1rem;"></p>
+    <img id="promoImage" src="./assets/FICHE TECHPRECISION.png" alt="Affiche TechPrecision">
+    <button class="cta" onclick="window.open('https://wa.me/596696XXXXXX', '_blank')">📲 Prendre RDV sur WhatsApp</button>
+    <div class="bonus">
+      <p>📤 Tu veux faire découvrir TechPrecision ?</p>
+      <form onsubmit="shareToFriend(event)">
+        <input type="text" id="friendName" placeholder="Prénom de ton ami" required style="margin-bottom: 5px;"><br>
+        <input type="tel" id="friendPhone" placeholder="Numéro de téléphone" required><br>
+        <button type="submit" class="cta" style="margin-top: 10px;">Partager à un ami</button>
+      </form>
+      <p>📥 Tu peux aussi <a href="./assets/FICHE TECHPRECISION.png" download style="color:#1e90ff;">télécharger l'affiche</a> et la partager à volonté.</p>
+      <p>🎁 Après 10 partages prouvés par capture WhatsApp, tu participes à la <strong>cagnotte pour un ordinateur portable à la rentrée 2025</strong> !</p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const prenom = params.get('prenom') || 'Quelqu'un';
+    const genre = params.get('genre') || 'h';
+
+    let teaserText = "";
+    let finalText = "";
+
+    if (genre.toLowerCase() === 'h') {
+      teaserText = `${prenom}, regarde ce qu'elle fait pendant ton absence...`;
+      finalText = `Pour faire face à la vie chère, elle est juste chez <strong>TechPrecision</strong> 💻 pour faire contrôler ou réparer son PC Portable.`;
+    } else {
+      teaserText = `${prenom}, regarde ce qu'il fait pendant ton absence...`;
+      finalText = `Pour faire face à la vie chère, il est juste chez <strong>TechPrecision</strong> 💻 pour faire contrôler ou réparer son PC Portable.`;
+    }
+
+    document.getElementById("teaser").innerText = teaserText;
+
+    setTimeout(() => {
+      document.getElementById('teaser').style.display = 'none';
+      document.getElementById('finalMessage').innerHTML = finalText;
+      document.getElementById('reveal').style.display = 'flex';
+    }, 4000);
+
+    function shareToFriend(e) {
+      e.preventDefault();
+      const name = document.getElementById('friendName').value;
+      const phone = document.getElementById('friendPhone').value.replace(/\D/g, '');
+      const link = `https://techrepare972.github.io/techprecision-site/tease.html?prenom=${encodeURIComponent(name)}&genre=h`;
+      const message = `👀 ${name}, regarde ce qu'elle fait pendant ton absence... Clique ici 👉 ${link}`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
